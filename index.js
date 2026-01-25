@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/products/category', categoryRoutes);
-app.use('/api/products/category/:category', productRoutes);
+app.use('/api/products/category/', productRoutes);
 app.use('/api/carts', cartRoutes);
 
 // Start server
