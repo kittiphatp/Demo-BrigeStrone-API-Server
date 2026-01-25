@@ -30,7 +30,7 @@ const createCart = (req, res) => {
 const addItemtoCart = (req, res) => {
     try {
         const { customer_id, product_id, product_name, quantity, price } = req.body;
-        const cartPath = path.join(__dirname, '../carts', `${customer_id}.json`);
+        const cartPath = path.join('/tmp', `${customer_id}.json`);
         fs.readFile(cartPath, 'utf8', (err, data) => {
             if (err) {
                 res.status(500).json({ message: err.message });
@@ -72,7 +72,7 @@ const addItemtoCart = (req, res) => {
 const deleteCart = (req, res) => {
     try {
         const customer_id = req.params.customer_id;
-        const cartPath = path.join(__dirname, '../carts', `${customer_id}.json`);
+        const cartPath = path.join('/tmp', `${customer_id}.json`);
         fs.unlinkSync(cartPath);
         res.status(200).json({ message: 'Cart deleted successfully' });
     } catch (error) {
@@ -85,6 +85,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
