@@ -20,9 +20,9 @@ app.use(morgan('dev'));
 
 
 // Routes
-app.use('/api/category', categoryRoutes);
+app.use('/api/category/', categoryRoutes);
 app.use('/api/products/category/', productRoutes);
-app.use('/api/carts', cartRoutes);
+app.use('/api/carts/', cartRoutes);
 
 // Start server
 app.listen(PORT, () => {
