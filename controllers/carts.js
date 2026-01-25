@@ -4,7 +4,7 @@ const path = require('path');
 const createCart = (req, res) => {
     try {
         const { customer_id, product_id, product_name, quantity, price } = req.body;
-        const cartPath = path.join(__dirname, '../carts', `${customer_id}.json`);
+        const cartPath = path.join(__dirname, '../../carts', `${customer_id}.json`);
         let cart = {
             "customer_id": customer_id,
             "product": [
@@ -85,3 +85,4 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
