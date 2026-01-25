@@ -55,8 +55,8 @@ const addItemtoCart = (req, res) => {
                 let cart = {
                     "customer_id": customer_id,
                     "product": product_arr,
-                    "total_quantity": product_arr.reduce((total, product) => total + product.quantity, 0),
-                    "total_price": product_arr.reduce((total, product) => total + product.price * product.quantity, 0),
+                    "total_quantity": product_arr.reduce((total, product) => Number(total) + Number(product.quantity), 0),
+                    "total_price": product_arr.reduce((total, product) => Number(total) + product.price * product.quantity, 0),
                     "html_table": `<table style='width:300px; border: 1px solid black; border-collapse: collapse;'><tr><th style='border: 1px solid black; background-color: #aaa;'>Product Name</th><th style='border: 1px solid black; background-color: #aaa;'>Unit Price</th><th style='border: 1px solid black; background-color: #aaa;'>Quantity</th><th style='border: 1px solid black; background-color: #aaa;'>Price</th></tr>${product_arr.map(item => `<tr><td style='border: 1px solid black;'>${item.product_name}</td><td style='border: 1px solid black; text-align: center;'>${item.unit_price}</td><td style='border: 1px solid black; text-align: center;'>${item.quantity}</td><td style='border: 1px solid black; text-align: center;'>${item.price}</td></tr>`).join('')}<td style='border: 1px solid black; background-color: #aaa;'>Total</td><td style='border: 1px solid black; background-color: #aaa; text-align: center;'></td><td style='border: 1px solid black; background-color: #aaa; text-align: center;'>${product_arr.reduce((total, product) => total + product.quantity, 0)}</td><td style='border: 1px solid black; background-color: #aaa; text-align: center'>${product_arr.reduce((total, product) => total + product.price * product.quantity, 0)}</td></tr></table>`
                 };
 
@@ -85,6 +85,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
