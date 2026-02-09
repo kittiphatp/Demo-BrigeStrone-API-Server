@@ -42,8 +42,8 @@ const addItemtoCart = (req, res) => {
                 if (isExistingProduct) {
                     product_arr.map(item => {
                         if (item.product_id === product_id && item.unit_price === price) {
-                            item.quantity += quantity;
-                            item.price = item.quantity * price;
+                            Number(item.quantity) += Number(quantity);
+                            item.price = Number(item.quantity) * Number(price);
                         }
                     });
                 } else {
@@ -85,6 +85,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
