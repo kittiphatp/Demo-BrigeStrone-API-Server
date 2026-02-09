@@ -3,7 +3,7 @@ const path = require('path');
 
 function getProductImageById(id) {
     try {
-        const data = fs.readFileSync('data.json', 'utf8');
+        const data = fs.readFileSync('../data/products.json', 'utf8');
         const products = JSON.parse(data);
         const product = products.find(item => item.product_id === id);]
         return product ? product.img : "Product not found";        
@@ -16,7 +16,7 @@ const createCart = (req, res) => {
     try {
         const { customer_id, product_id, product_name, quantity, price } = req.body;
         const cartPath = path.join('/tmp', `${customer_id}.json`);
-        const img = getProductImageById(product_id)
+        const img = getProductImageById(product_id);
         let cart = {
             "customer_id": customer_id,
             "product": [
@@ -99,6 +99,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
