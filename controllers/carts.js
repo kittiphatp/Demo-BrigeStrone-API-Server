@@ -3,12 +3,14 @@ const path = require('path');
 
 function getProductImageById(id) {
     try {
-        const data = fs.readFileSync('../data/products.json', 'utf8');
+        const filePath = path.join(process.cwd(), 'data', 'products.json');
+        const data = fs.readFileSync(filePath, 'utf8');
         const products = JSON.parse(data);
-        const product = products.find(item => item.product_id === id);]
+        const product = products.find(item => item.product_id === Number(id));
         return product ? product.img : "Product not found";        
     } catch (err) {
         console.error("Error reading file:", err);
+        return null;
     }
 }
 
@@ -99,6 +101,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
