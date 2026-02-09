@@ -33,7 +33,7 @@ const createCart = (req, res) => {
             ],
             "total_quantity": quantity,
             "total_price": quantity * price,
-            "html_table": `<table style='width:500px; border: 1px solid black; border-collapse: collapse;'><tr><th style='border: 1px solid black; background-color: #aaa;'>Product Name</th><th style='border: 1px solid black; background-color: #aaa;'>Unit Price</th><th style='border: 1px solid black; background-color: #aaa;'>Quantity</th><th style='border: 1px solid black; background-color: #aaa;'>Price</th><th style='border: 1px solid black; background-color: #aaa;'>Image</th></tr><tr><td style='border: 1px solid black;'>${product_name}</td><td style='border: 1px solid black; text-align: center;'>${price}</td><td style='border: 1px solid black; text-align: center;'>${quantity}</td><td style='border: 1px solid black; text-align: center;'>${price * quantity}</td><td style='border: 1px solid black; text-align: center;'><img src='${img}' alt='${img}' height='150px' /></td></tr><tr><td style='border: 1px solid black; background-color: #aaa;'>Total</td><td style='border: 1px solid black; background-color: #aaa; text-align: center;'></td><td style='border: 1px solid black; background-color: #aaa; text-align: center;'>${quantity}</td><td style='border: 1px solid black; background-color: #aaa; text-align: center'>${quantity * price}</td><td style='border: 1px solid black; background-color: #aaa; text-align: center'></td></tr></table>`
+            "html_table": ``
         };
         fs.writeFileSync(cartPath, JSON.stringify(cart));
         res.status(201).json(cart);
@@ -73,7 +73,7 @@ const addItemtoCart = (req, res) => {
                     "product": product_arr,
                     "total_quantity": product_arr.reduce((total, product) => Number(total) + Number(product.quantity), 0),
                     "total_price": product_arr.reduce((total, product) => Number(total) + Number(product.unit_price) * Number(product.quantity), 0),
-                    "html_table": `<table style='width:500px; border: 1px solid black; border-collapse: collapse;'><tr><th style='border: 1px solid black; background-color: #aaa;'>Product Name</th><th style='border: 1px solid black; background-color: #aaa;'>Unit Price</th><th style='border: 1px solid black; background-color: #aaa;'>Quantity</th><th style='border: 1px solid black; background-color: #aaa;'>Price</th><th style='border: 1px solid black; background-color: #aaa;'>Image</th></tr><tr><td style='border: 1px solid black;'>${product_name}</td><td style='border: 1px solid black; text-align: center;'>${price}</td><td style='border: 1px solid black; text-align: center;'>${quantity}</td><td style='border: 1px solid black; text-align: center;'>${price * quantity}</td><td style='border: 1px solid black; text-align: center;'><img src='${img}' alt='${img}' height='150px' /></td></tr><tr><td style='border: 1px solid black; background-color: #aaa;'>Total</td><td style='border: 1px solid black; background-color: #aaa; text-align: center;'></td><td style='border: 1px solid black; background-color: #aaa; text-align: center;'>${quantity}</td><td style='border: 1px solid black; background-color: #aaa; text-align: center'>${quantity * price}</td><td style='border: 1px solid black; background-color: #aaa; text-align: center'></td></tr></table>`
+                    "html_table": ``
                 };
 
                 fs.writeFileSync(cartPath, JSON.stringify(cart));
@@ -101,6 +101,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
