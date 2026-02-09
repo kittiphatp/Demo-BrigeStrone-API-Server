@@ -18,7 +18,7 @@ const createCart = (req, res) => {
     try {
         const { customer_id, product_id, product_name, quantity, price } = req.body;
         const cartPath = path.join('/tmp', `${customer_id}.json`);
-        const img = getProductImageById(${product_id});
+        const img = getProductImageById(product_id);
         let cart = {
             "customer_id": customer_id,
             "product": [
@@ -62,7 +62,7 @@ const addItemtoCart = (req, res) => {
                         }
                     });
                 } else {
-                    const img = getProductImageById(${product_id});
+                    const img = getProductImageById(product_id);
                     product_arr.push(
                         { product_id, product_name, unit_price: price, quantity , price: price * quantity , img: img }
                     );
@@ -101,6 +101,7 @@ module.exports = {
     addItemtoCart,
     deleteCart
 }
+
 
 
 
